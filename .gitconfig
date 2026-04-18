@@ -1,0 +1,7 @@
+[user]
+	email = sebascabeza1991@gmail.com
+	name = sebastian
+[credential]
+	helper = store
+[init]
+	defaultBranch = dev

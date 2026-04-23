@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="data/Data.csproj" Id="65c0904a-68a2-4011-a9e5-4e52d30170b8" DisplayName="data" />
+  <Project Path="domain/Domain.csproj" Id="db742a26-8c9f-465a-b49a-75267f664c0d" DisplayName="domain" />
+  <Project Path="services/Services.csproj" Id="416fa9bb-945e-4c57-832d-36c8a9121ac4" DisplayName="services" />
+  <Project Path="tp-winform-equipo-1B/tp-winform-equipo-1B.csproj" />
+</Solution>

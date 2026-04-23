@@ -1,0 +1,15 @@
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\Data.csproj.AssemblyReference.cache
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\Data.AssemblyInfoInputs.cache
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\Data.AssemblyInfo.cs
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\Data.csproj.CoreCompileInputs.cache
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\bin\Debug\net8.0\data.deps.json
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\bin\Debug\net8.0\data.dll
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\bin\Debug\net8.0\data.pdb
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\bin\Debug\net8.0\domain.dll
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\bin\Debug\net8.0\domain.pdb
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\data.csproj.Up2Date
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\data.dll
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\refint\data.dll
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\data.pdb
+C:\Users\sebas\source\repos\tp-winform-equipo-1B\data\obj\Debug\net8.0\ref\data.dll

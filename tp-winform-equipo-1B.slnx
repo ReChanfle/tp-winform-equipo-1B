@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="controlador/controlador.csproj" Id="add94359-ecb2-4e5d-9832-e1d6fa03384d" />
   <Project Path="dominio/dominio.csproj" Id="a293b01e-3756-4e3b-8228-bada4816e916" />
   <Project Path="infraestructura/infraestructura.csproj" Id="124626bb-ab02-463d-a35a-e9a9cb754ea1" />
   <Project Path="servicio/servicio.csproj" Id="c0e57de2-903d-4032-86bf-570ae5c0c00a" />

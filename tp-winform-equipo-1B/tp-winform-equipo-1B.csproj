@@ -91,6 +91,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\controlador\controlador.csproj">
+      <Project>{add94359-ecb2-4e5d-9832-e1d6fa03384d}</Project>
+      <Name>controlador</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dominio\dominio.csproj">
       <Project>{a293b01e-3756-4e3b-8228-bada4816e916}</Project>
       <Name>dominio</Name>

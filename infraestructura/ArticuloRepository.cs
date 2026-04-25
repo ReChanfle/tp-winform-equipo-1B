@@ -24,7 +24,9 @@ namespace infraestructura
                     Codigo = @codigo,
                     Nombre = @nombre,
                     Descripcion = @desc,
-                    Precio = @precio
+                    Precio = @precio,
+                    IdMarca = @IdMarca,
+                    IdCategoria = @IdCategoria
                   WHERE Id = @id";
 
             var cmd = new SqlCommand(query, conn);
@@ -33,6 +35,8 @@ namespace infraestructura
             cmd.Parameters.AddWithValue("@nombre", art.Nombre);
             cmd.Parameters.AddWithValue("@desc", art.Descripcion);
             cmd.Parameters.AddWithValue("@precio", art.Precio);
+            cmd.Parameters.AddWithValue("@IdMarca", art.IdMarca);
+            cmd.Parameters.AddWithValue("@IdCategoria", art.IdCategoria);
             cmd.Parameters.AddWithValue("@id", art.Id);
 
             cmd.ExecuteNonQuery();

@@ -1,6 +1,7 @@
 ﻿using dominio;
 using infraestructura;
 using servicio;
+using controlador;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -11,15 +12,13 @@ namespace tp_winform_equipo_1B
     {
         private Articulo articulo;
 
-        // ===== NUEVO (ALTA) =====
+
         public FormArt()
         {
             InitializeComponent();
             this.Load += FrmArticulo_Load;
             articulo = new Articulo();
         }
-
-        // ===== EDITAR =====
         public FormArt(Articulo articuloSeleccionado)
         {
             InitializeComponent();
@@ -31,7 +30,6 @@ namespace tp_winform_equipo_1B
         {
             CargarCombos();
 
-            // SI ES EDICION
             if (articulo.Id > 0)
             {
                 txtCodigo.Text = articulo.Codigo;
@@ -39,8 +37,11 @@ namespace tp_winform_equipo_1B
                 txtDescripcion.Text = articulo.Descripcion;
                 txtPrecio.Text = articulo.Precio.ToString();
 
-                cboMarca.SelectedValue = articulo.IdMarca;
-                cboCategoria.SelectedValue = articulo.IdCategoria;
+                if (articulo.IdMarca.HasValue)
+                    cboMarca.SelectedValue = articulo.IdMarca.Value;
+
+                if (articulo.IdCategoria.HasValue)
+                    cboCategoria.SelectedValue = articulo.IdCategoria.Value;
 
                 this.Text = "Editar Artículo";
             }
@@ -84,13 +85,45 @@ namespace tp_winform_equipo_1B
                 articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
-                articulo.Precio = decimal.Parse(txtPrecio.Text);
+                decimal precio;
+                if (decimal.TryParse(txtPrecio.Text, out precio))
+                {
+                    articulo.Precio = precio;
+                }
+                else
+                {
+                    MessageBox.Show("El precio ingresado no es válido.");
+                    return;
+                }
 
                 articulo.IdMarca = Convert.ToInt32(cboMarca.SelectedValue);
                 articulo.IdCategoria = Convert.ToInt32(cboCategoria.SelectedValue);
 
                 articulo.Marca = cboMarca.Text;
                 articulo.Categoria = cboCategoria.Text;
+
+                ArticuloController controller = new ArticuloController();
+
+                var errores = controller.Validate(articulo);
+
+                if (errores.Count > 0)
+                {
+                    MessageBox.Show(string.Join("\n", errores));
+                    return;
+                }
+
+                ImagenRepository imgRepo = new ImagenRepository(
+                new ConexionDb(
+                        "Server=localhost;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;"
+                    )
+                );
+
+                foreach (Imagen img in articulo.Imagenes)
+                {
+                    img.IdArticulo = articulo.Id;
+                    img.IdArticulo = articulo.Id;
+                    imgRepo.Add(img);
+                }
 
                 ArticuloService artService = new ArticuloService(
                     new ArticuloRepository(
@@ -100,7 +133,6 @@ namespace tp_winform_equipo_1B
                     )
                 );
 
-                // SI EXISTE => UPDATE
                 if (articulo.Id > 0)
                 {
                     artService.Update(articulo);
@@ -120,5 +152,49 @@ namespace tp_winform_equipo_1B
                 MessageBox.Show("Error al guardar: " + ex.Message);
             }
         }
+
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtImagen.Text))
+                return;
+
+            articulo.Imagenes.Add(new Imagen
+            {
+                ImagenUrl = txtImagen.Text,
+                IdArticulo = articulo.Id
+            });
+
+            RefrescarListaImagenes();
+
+            txtImagen.Clear();
+        }
+
+        private void RefrescarListaImagenes()
+        {
+            lstImagenes.DataSource = null;
+            lstImagenes.DataSource = articulo.Imagenes;
+            lstImagenes.DisplayMember = "ImagenUrl";
+        }
+
+        private void lstImagenes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstImagenes.SelectedItem != null)
+            {
+                Imagen img = (Imagen)lstImagenes.SelectedItem;
+                pictureBox1.Load(img.ImagenUrl);
+            }
+        }
+
+        private void btnEliminarImagen_Click(object sender, EventArgs e)
+        {
+            if (lstImagenes.SelectedItem == null) return;
+
+            articulo.Imagenes.Remove((Imagen)lstImagenes.SelectedItem);
+
+            RefrescarListaImagenes();
+        }
+
+
     }
 }

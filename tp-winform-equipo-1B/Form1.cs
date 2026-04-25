@@ -27,6 +27,9 @@ namespace tp_winform_equipo_1B
                 var service = new ArticuloService(repo);
                 var productos = service.Listar();
                 dataGridView2.DataSource = productos;
+                dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView2.Columns["IdMarca"].Visible = false;
+                dataGridView2.Columns["IdCategoria"].Visible = false;
 
             }
             catch (Exception)

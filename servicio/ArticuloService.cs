@@ -19,6 +19,16 @@ namespace servicio
             return _repo.GetAll();
         }
 
+        public void Add(Articulo art)
+        {
+            _repo.Add(art);
+        }
+
+        public void Update(Articulo art)
+        {
+            _repo.Update(art);
+        }
+
         public void Agregar(Articulo art)
         {
             if (string.IsNullOrEmpty(art.Nombre))

@@ -15,6 +15,28 @@ namespace infraestructura
             _factory = factory;
         }
 
+        public void Update(Articulo art)
+        {
+            var conn = _factory.CreateConnection();
+            conn.Open();
+
+            var query = @"UPDATE Articulos SET
+                    Codigo = @codigo,
+                    Nombre = @nombre,
+                    Descripcion = @desc,
+                    Precio = @precio
+                  WHERE Id = @id";
+
+            var cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@codigo", art.Codigo);
+            cmd.Parameters.AddWithValue("@nombre", art.Nombre);
+            cmd.Parameters.AddWithValue("@desc", art.Descripcion);
+            cmd.Parameters.AddWithValue("@precio", art.Precio);
+            cmd.Parameters.AddWithValue("@id", art.Id);
+
+            cmd.ExecuteNonQuery();
+        }
         public List<Articulo> GetAll()
         {
             var lista = new List<Articulo>();

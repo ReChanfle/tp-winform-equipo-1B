@@ -22,7 +22,21 @@ namespace infraestructura
             var conn = _factory.CreateConnection();
             conn.Open();
 
-            var query = "SELECT Id, Codigo, Nombre, Descripcion, Precio FROM Articulos";
+            var query = @"
+                        SELECT 
+                            A.Id,
+                            A.Codigo,
+                            A.Nombre,
+                            A.Descripcion,
+                            M.Id AS IdMarca,
+                            M.Descripcion AS Marca,
+                            C.Id AS IdCategoria,
+                            C.Descripcion AS Categoria,
+                            A.Precio
+                        FROM ARTICULOS A
+                        LEFT JOIN MARCAS M ON A.IdMarca = M.Id
+                        LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id";
+
             var cmd = new SqlCommand(query, conn);
             var reader = cmd.ExecuteReader();
 
@@ -34,7 +48,13 @@ namespace infraestructura
                     Codigo = reader["Codigo"].ToString(),
                     Nombre = reader["Nombre"].ToString(),
                     Descripcion = reader["Descripcion"].ToString(),
-                    Precio = (decimal)reader["Precio"]
+                    Precio = (decimal)reader["Precio"],
+
+                    IdMarca = (int)reader["IdMarca"],
+                    Marca = reader["Marca"].ToString(),
+
+                    IdCategoria = (int)reader["IdCategoria"],
+                    Categoria = reader["Categoria"].ToString()
                 });
             }
 

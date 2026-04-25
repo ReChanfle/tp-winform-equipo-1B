@@ -10,6 +10,7 @@ namespace tp_winform_equipo_1B
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -19,21 +20,41 @@ namespace tp_winform_equipo_1B
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
             try
             {
-                var conexion = new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;");
+                var conexion = new ConexionDb(
+                    "server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true"
+                );
+
                 var repo = new ArticuloRepository(conexion);
                 var service = new ArticuloService(repo);
                 var productos = service.Listar();
                 dataGridView2.DataSource = productos;
 
+                dataGridView2.DataSource = service.Listar();
             }
             catch (Exception ex)
             {
-              
-                MessageBox.Show($"Error al cargar los datos: {ex.ToString()}");
+                MessageBox.Show("Error: " + ex.Message);
             }
+        }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow == null)
+                return;
+
+            Articulo seleccionado = (Articulo)dataGridView2.CurrentRow.DataBoundItem;
+
+            FormArticulo frm = new FormArticulo(seleccionado);
+            frm.ShowDialog();
+
+            // refreshhhhh
+            btnCargar_Click(sender, e);
         }
 
 

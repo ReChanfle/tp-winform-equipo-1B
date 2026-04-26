@@ -3,6 +3,7 @@ using infraestructura;
 using servicio;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace tp_winform_equipo_1B
@@ -55,9 +56,7 @@ namespace tp_winform_equipo_1B
 
                 List<Marca> marcas = new MarcaService(
                     new MarcaRepository(
-                        new ConexionDb(
-                            "Server=localhost;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;"
-                            )
+                        new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                         )
                     ).Listar();
 
@@ -81,9 +80,7 @@ namespace tp_winform_equipo_1B
             {
                 List<Categoria> categorias = new CategoriaService(
                     new CategoriaRepository(
-                        new ConexionDb(
-                            "Server=localhost;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;"
-                            )
+                        new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                         )
                     ).Listar();
 
@@ -106,8 +103,7 @@ namespace tp_winform_equipo_1B
                 int idMarca = Convert.ToInt32(toolStripComboBox3.ComboBox.SelectedValue);
                 int idCategoria = Convert.ToInt32(toolStripComboBox4.ComboBox.SelectedValue);
 
-                var conexion = new ConexionDb(
-                    "Server=localhost;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;");
+                var conexion = new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;");
 
                 var repo = new ArticuloRepository(conexion);
 
@@ -159,28 +155,36 @@ namespace tp_winform_equipo_1B
             }
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            //MessageBox.Show("CLICK");
 
-            if (dataGridView2.Columns[e.ColumnIndex].Name == "Editar")
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            var grid = (DataGridView)sender;
+
+            
+            if (!(grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn))
+                return;
+
+            var art = (Articulo)grid.Rows[e.RowIndex].DataBoundItem;
+
+            
+            if (grid.Columns[e.ColumnIndex].Name == "Editar")
             {
-                Articulo artSelecccionado =(Articulo)dataGridView2.Rows[e.RowIndex].DataBoundItem;
-
-                FormArt formArt = new FormArt(artSelecccionado);
-                formArt.ShowDialog();
-
-                if (formArt.DialogResult == DialogResult.OK)
+                using (FormArt formArt = new FormArt(art))
                 {
-                    CargarArticulos();
+                    if (formArt.ShowDialog() == DialogResult.OK)
+                    {
+                        CargarArticulos();
+                    }
                 }
-
             }
 
-            if (dataGridView2.Columns[e.ColumnIndex].Name == "Eliminar")
-            {
-                Articulo art = (Articulo)dataGridView2.Rows[e.RowIndex].DataBoundItem;
 
+            else if (grid.Columns[e.ColumnIndex].Name == "Eliminar")
+            {
                 DialogResult resultado = MessageBox.Show(
                     $"¿Deseás eliminar {art.Nombre}?",
                     "Confirmar eliminación",
@@ -190,26 +194,27 @@ namespace tp_winform_equipo_1B
 
                 if (resultado == DialogResult.Yes)
                 {
-
                     try
                     {
-                        ArticuloService artService = new ArticuloService(
-                        new ArticuloRepository(
-                            new ConexionDb(
-                                "Server=localhost;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;"
-                            )
-                        )
-                    );
-                        artService.Delete(art.Id);
-                        MessageBox.Show("Registro eliminado");
-                    }
-                    catch(Exception)
-                    {
-                        MessageBox.Show("Error al eliminar el registro");
-                    }
-                    
-                }
+                        await Task.Run(() =>
+                        {
+                            ArticuloService artService = new ArticuloService(
+                                new ArticuloRepository(
+                                    new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
+                                )
+                            );
 
+                            artService.Delete(art.Id);
+                        });
+
+                        MessageBox.Show("Registro eliminado");
+                        CargarArticulos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar: " + ex.Message);
+                    }
+                }
             }
         }
 
@@ -222,8 +227,6 @@ namespace tp_winform_equipo_1B
                 CargarArticulos();
             }
         }
-
-      
 
     }
 }

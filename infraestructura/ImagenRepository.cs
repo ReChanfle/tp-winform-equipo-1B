@@ -20,7 +20,7 @@ namespace infraestructura
 
         public void Add(Imagen img)
         {
-            using (var conn = _factory.CreateConnection())
+            var conn = _factory.CreateConnection();
             {
                 conn.Open();
 
@@ -35,6 +35,51 @@ namespace infraestructura
 
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public void DeleteByArticuloId(int idArticulo)
+        {
+            var conn = _factory.CreateConnection();
+            
+                conn.Open();
+
+                var query = "DELETE FROM IMAGENES WHERE IdArticulo = @id";
+
+                var cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", idArticulo);
+                cmd.ExecuteNonQuery();
+            
+        }
+
+        public List<Imagen> GetByArticuloId(int idArticulo)
+        {
+            List<Imagen> lista = new List<Imagen>();
+
+            var conn = _factory.CreateConnection();
+            
+                conn.Open();
+
+                var query = "SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES WHERE IdArticulo = @id";
+
+            var cmd = new SqlCommand(query, conn);
+                
+                    cmd.Parameters.AddWithValue("@id", idArticulo);
+
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        lista.Add(new Imagen
+                        {
+                            Id = (int)reader["Id"],
+                            IdArticulo = (int)reader["IdArticulo"],
+                            ImagenUrl = reader["ImagenUrl"].ToString()
+                        });
+                    }
+                
+            
+
+            return lista;
         }
 
     }

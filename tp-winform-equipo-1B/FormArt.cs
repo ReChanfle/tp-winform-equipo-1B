@@ -41,38 +41,9 @@ namespace tp_winform_equipo_1B
             idArticulo = id;
         }
 
-        private async Task CargarCombosAsync()
-        {
-            var marcasTask = Task.Run(() =>
-                new MarcaService(
-                    new MarcaRepository(
-                        new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
-                    )
-                ).Listar()
-            );
-
-            var categoriasTask = Task.Run(() =>
-                new CategoriaService(
-                    new CategoriaRepository(
-                        new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
-                    )
-                ).Listar()
-            );
-
-            var marcas = await marcasTask;
-            var categorias = await categoriasTask;
-
-            cboMarca.DataSource = marcas;
-            cboMarca.DisplayMember = "Descripcion";
-            cboMarca.ValueMember = "Id";
-
-            cboCategoria.DataSource = categorias;
-            cboCategoria.DisplayMember = "Descripcion";
-            cboCategoria.ValueMember = "Id";
-        }
         private async void FrmArticulo_Load(object sender, EventArgs e)
         {
-            await CargarCombosAsync();
+            CargarCombos();
 
             if (articulo.Id > 0)
             {
@@ -82,7 +53,7 @@ namespace tp_winform_equipo_1B
                 txtPrecio.Text = articulo.Precio.ToString();
 
                 ImagenRepository imgRepo = new ImagenRepository(
-                new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                 );
 
                 articulo.Imagenes = imgRepo.GetByArticuloId(articulo.Id);
@@ -107,13 +78,13 @@ namespace tp_winform_equipo_1B
         {
             List<Marca> marcas = new MarcaService(
                 new MarcaRepository(
-                    new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                    new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                 )
             ).Listar();
 
             List<Categoria> categorias = new CategoriaService(
                 new CategoriaRepository(
-                    new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                    new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                 )
             ).Listar();
 
@@ -164,7 +135,7 @@ namespace tp_winform_equipo_1B
                 
                 ArticuloService artService = new ArticuloService(
                     new ArticuloRepository(
-                        new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                        new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                     )
                 );
 
@@ -182,7 +153,7 @@ namespace tp_winform_equipo_1B
                 }
 
                 ImagenRepository imgRepo = new ImagenRepository(
-                    new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                    new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                 );
 
                 if (articulo.Id > 0)

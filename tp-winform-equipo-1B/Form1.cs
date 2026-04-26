@@ -23,7 +23,7 @@ namespace tp_winform_equipo_1B
 
             try
             {
-                var conexion = new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+                var conexion = new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;");
                 var repo = new ArticuloRepository(conexion);
                 var service = new ArticuloService(repo);
                 var productos = service.Listar();
@@ -56,7 +56,7 @@ namespace tp_winform_equipo_1B
 
                 List<Marca> marcas = new MarcaService(
                     new MarcaRepository(
-                        new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                        new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                         )
                     ).Listar();
 
@@ -80,7 +80,7 @@ namespace tp_winform_equipo_1B
             {
                 List<Categoria> categorias = new CategoriaService(
                     new CategoriaRepository(
-                        new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                        new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                         )
                     ).Listar();
 
@@ -103,7 +103,7 @@ namespace tp_winform_equipo_1B
                 int idMarca = Convert.ToInt32(toolStripComboBox3.ComboBox.SelectedValue);
                 int idCategoria = Convert.ToInt32(toolStripComboBox4.ComboBox.SelectedValue);
 
-                var conexion = new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+                var conexion = new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;");
 
                 var repo = new ArticuloRepository(conexion);
 
@@ -200,7 +200,7 @@ namespace tp_winform_equipo_1B
                         {
                             ArticuloService artService = new ArticuloService(
                                 new ArticuloRepository(
-                                    new ConexionDb("server=localhost\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true")
+                                    new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;")
                                 )
                             );
 

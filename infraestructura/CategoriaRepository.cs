@@ -17,8 +17,8 @@ namespace infraestructura
         {
             var lista = new List<Categoria>();
 
-            using (var conn = _factory.CreateConnection())
-            {
+            var conn = _factory.CreateConnection();
+            
                 conn.Open();
 
                 var cmd = new SqlCommand("SELECT Id, Descripcion FROM CATEGORIAS", conn);
@@ -32,7 +32,7 @@ namespace infraestructura
                         Descripcion = reader["Descripcion"].ToString()
                     });
                 }
-            }
+            
 
             return lista;
         }

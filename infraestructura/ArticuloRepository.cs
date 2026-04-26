@@ -17,8 +17,8 @@ namespace infraestructura
 
         public void Update(Articulo art)
         {
-            using (var conn = _factory.CreateConnection())
-            {
+            var conn = _factory.CreateConnection();
+            
                 conn.Open();
 
                 var query = @"UPDATE Articulos SET
@@ -30,28 +30,28 @@ namespace infraestructura
                 IdCategoria = @IdCategoria
               WHERE Id = @id";
 
-                using (var cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@codigo", art.Codigo);
-                    cmd.Parameters.AddWithValue("@nombre", art.Nombre);
-                    cmd.Parameters.AddWithValue("@desc", art.Descripcion);
-                    cmd.Parameters.AddWithValue("@precio", art.Precio);
-                    cmd.Parameters.AddWithValue("@IdMarca", art.IdMarca);
-                    cmd.Parameters.AddWithValue("@IdCategoria", art.IdCategoria);
-                    cmd.Parameters.AddWithValue("@id", art.Id);
+            var cmd = new SqlCommand(query, conn);
+                
+            cmd.Parameters.AddWithValue("@codigo", art.Codigo);
+            cmd.Parameters.AddWithValue("@nombre", art.Nombre);
+            cmd.Parameters.AddWithValue("@desc", art.Descripcion);
+            cmd.Parameters.AddWithValue("@precio", art.Precio);
+            cmd.Parameters.AddWithValue("@IdMarca", art.IdMarca);
+            cmd.Parameters.AddWithValue("@IdCategoria", art.IdCategoria);
+            cmd.Parameters.AddWithValue("@id", art.Id);
 
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            cmd.ExecuteNonQuery();
+                
+            
         }
 
         public List<Articulo> GetAll()
         {
             var lista = new List<Articulo>();
 
-            using (var conn = _factory.CreateConnection())
-            {
-                conn.Open();
+            var conn = _factory.CreateConnection();
+            
+            conn.Open();
 
                 var query = @"
             SELECT 
@@ -68,26 +68,25 @@ namespace infraestructura
             LEFT JOIN MARCAS M ON A.IdMarca = M.Id
             LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id";
 
-                using (var cmd = new SqlCommand(query, conn))
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        lista.Add(new Articulo
-                        {
-                            Id = (int)reader["Id"],
-                            Codigo = reader["Codigo"].ToString(),
-                            Nombre = reader["Nombre"].ToString(),
-                            Descripcion = reader["Descripcion"].ToString(),
-                            Precio = (decimal)reader["Precio"],
-                            Marca = reader["MarcaDes"]?.ToString() ?? "Sin marca",
-                            Categoria = reader["CategoriaDes"]?.ToString() ?? "Sin categoria",
-                            IdCategoria = reader["IdCategoria"] != DBNull.Value ? (int?)reader["IdCategoria"] : null,
-                            IdMarca = reader["IdMarca"] != DBNull.Value ? (int?)reader["IdMarca"] : null
+            var cmd = new SqlCommand(query, conn);
+            var reader = cmd.ExecuteReader();
+                
+            while (reader.Read())
+            {
+                  lista.Add(new Articulo
+                  {
+                       Id = (int)reader["Id"],
+                       Codigo = reader["Codigo"].ToString(),
+                       Nombre = reader["Nombre"].ToString(),
+                       Descripcion = reader["Descripcion"].ToString(),
+                       Precio = (decimal)reader["Precio"],
+                       Marca = reader["MarcaDes"]?.ToString() ?? "Sin marca",
+                       Categoria = reader["CategoriaDes"]?.ToString() ?? "Sin categoria",
+                       IdCategoria = reader["IdCategoria"] != DBNull.Value ? (int?)reader["IdCategoria"] : null,
+                       IdMarca = reader["IdMarca"] != DBNull.Value ? (int?)reader["IdMarca"] : null
                         });
                     }
-                }
-            }
+               
 
             return lista;
         }
@@ -96,9 +95,9 @@ namespace infraestructura
         {
             var lista = new List<Articulo>();
 
-            using (var conn = _factory.CreateConnection())
-            {
-                conn.Open();
+            var conn = _factory.CreateConnection();
+            
+            conn.Open();
 
                 var query = @"
             SELECT 
@@ -117,13 +116,13 @@ namespace infraestructura
             WHERE (@IdMarca = 0 OR A.IdMarca = @IdMarca)
             AND (@IdCategoria = 0 OR A.IdCategoria = @IdCategoria)";
 
-                using (var cmd = new SqlCommand(query, conn))
-                {
+            var cmd = new SqlCommand(query, conn);
+                
                     cmd.Parameters.AddWithValue("@IdMarca", idMarca);
                     cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
 
-                    using (var reader = cmd.ExecuteReader())
-                    {
+            var reader = cmd.ExecuteReader();
+                    
                         while (reader.Read())
                         {
                             lista.Add(new Articulo
@@ -137,9 +136,9 @@ namespace infraestructura
                                 Categoria = reader["Categoria"].ToString()
                             });
                         }
-                    }
-                }
-            }
+                    
+                
+            
 
             return lista;
         }
@@ -172,18 +171,18 @@ namespace infraestructura
 
         public void Delete(int id)
         {
-            using (var conn = _factory.CreateConnection())
-            {
+            var conn = _factory.CreateConnection();
+            
                 conn.Open();
 
                 var query = "DELETE FROM ARTICULOS WHERE Id = @id";
 
-                using (var cmd = new SqlCommand(query, conn))
+            var cmd = new SqlCommand(query, conn);
                 {
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
                 }
-            }
+            
         }
     }
 }

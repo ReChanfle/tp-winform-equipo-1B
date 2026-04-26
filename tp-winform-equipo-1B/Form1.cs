@@ -317,6 +317,31 @@ namespace tp_winform_equipo_1B
             MostrarImagenActual();
         }
 
+        private void Filtrar()
+        {
+            try
+            {
+                string filtro = txtBuscar.Text.ToLower();
+
+                var conexion = new ConexionDb();
+                var repo = new ArticuloRepository(conexion);
+
+                var lista = repo.GetAll();
+
+                var filtrados = lista.FindAll(x =>
+                    (x.Codigo != null && x.Codigo.ToLower().Contains(filtro)) ||
+                    (x.Nombre != null && x.Nombre.ToLower().Contains(filtro)) ||
+                    (x.Descripcion != null && x.Descripcion.ToLower().Contains(filtro))
+                );
+
+                dataGridView2.DataSource = filtrados;
+            }
+            catch
+            {
+                MessageBox.Show("Error al filtrar");
+            }
+        }
+
         private void btnLastPicture_Click(object sender, EventArgs e)
         {
             if (imagenesActuales == null || imagenesActuales.Count == 0)
@@ -330,5 +355,14 @@ namespace tp_winform_equipo_1B
             MostrarImagenActual();
         }
 
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Filtrar();
+        }
+
+        private void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            txtBuscar.Text = "";
+        }
     }
 }

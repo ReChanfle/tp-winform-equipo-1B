@@ -10,12 +10,17 @@ namespace tp_winform_equipo_1B
 {
     public partial class Form1 : Form
     {
-        
+        private List<Imagen> listaImagenesActuales = new List<Imagen>();
+        private int indiceActual = 0;
+
         public Form1()
         {
             InitializeComponent();
             this.Load += Form1_Load;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
+
+
         }
 
         private void CargarArticulos ()
@@ -23,7 +28,7 @@ namespace tp_winform_equipo_1B
 
             try
             {
-                var conexion = new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=NuevaPassword123;TrustServerCertificate=True;");
+                var conexion = new ConexionDb("Server=localhost,1433;Database=CATALOGO_P3_DB;User Id=sa;Password=BaseDatos#2;TrustServerCertificate=True;");
                 var repo = new ArticuloRepository(conexion);
                 var service = new ArticuloService(repo);
                 var productos = service.Listar();

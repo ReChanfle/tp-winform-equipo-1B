@@ -92,6 +92,7 @@
             // 
             // toolStripComboBox3
             // 
+            this.toolStripComboBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBox3.Name = "toolStripComboBox3";
             this.toolStripComboBox3.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox3.Click += new System.EventHandler(this.LoadComboBrands_Click);
@@ -104,6 +105,7 @@
             // 
             // toolStripComboBox4
             // 
+            this.toolStripComboBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBox4.Name = "toolStripComboBox4";
             this.toolStripComboBox4.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox4.Click += new System.EventHandler(this.LoadComboCategory_Click);

@@ -21,7 +21,8 @@ namespace servicio
 
         public void Add(Articulo art)
         {
-            _repo.Add(art);
+            int idGenerado = _repo.Add(art);
+            art.Id = idGenerado; 
         }
 
         public void Update(Articulo art)

@@ -39,28 +39,27 @@
             this.toolStripComboBox4 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.pbVisor = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnAnterior = new System.Windows.Forms.Button();
-            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVisor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregar
             // 
             this.btnAgregar.AccessibleName = "btnAgregar";
-            this.btnAgregar.Location = new System.Drawing.Point(12, 474);
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(12, 462);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(141, 35);
             this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Text = "Agregar Producto";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnCrearArticulo_Click);
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AccessibleName = "datagridview2";
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(12, 54);
             this.dataGridView2.Name = "dataGridView2";
@@ -81,7 +80,7 @@
             this.toolStripButton2});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1457, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1309, 25);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -134,68 +133,33 @@
             this.toolStripButton2.Text = "Limpiar";
             this.toolStripButton2.Click += new System.EventHandler(this.ResetFilter_Click);
             // 
-            // pbVisor
+            // pictureBox1
             // 
-            this.pbVisor.AccessibleName = "pbVisor";
-            this.pbVisor.Location = new System.Drawing.Point(1098, 106);
-            this.pbVisor.Name = "pbVisor";
-            this.pbVisor.Size = new System.Drawing.Size(281, 245);
-            this.pbVisor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbVisor.TabIndex = 3;
-            this.pbVisor.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1145, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "PREVISUALIZACION";
-            // 
-            // btnAnterior
-            // 
-            this.btnAnterior.AccessibleName = "btnAnterior";
-            this.btnAnterior.Location = new System.Drawing.Point(1098, 417);
-            this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
-            this.btnAnterior.TabIndex = 5;
-            this.btnAnterior.Text = "Anterior";
-            this.btnAnterior.UseVisualStyleBackColor = true;
-            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
-            // 
-            // btnSiguiente
-            // 
-            this.btnSiguiente.AccessibleName = "btnSiguiente";
-            this.btnSiguiente.Location = new System.Drawing.Point(1304, 417);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
-            this.btnSiguiente.TabIndex = 7;
-            this.btnSiguiente.Text = "Siguiente";
-            this.btnSiguiente.UseVisualStyleBackColor = true;
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.pictureBox1.AccessibleName = "pictureBox1";
+            this.pictureBox1.Location = new System.Drawing.Point(1023, 75);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(263, 381);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1457, 555);
-            this.Controls.Add(this.btnSiguiente);
-            this.Controls.Add(this.btnAnterior);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pbVisor);
+            this.ClientSize = new System.Drawing.Size(1309, 510);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.dataGridView2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVisor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,9 +180,6 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.PictureBox pbVisor;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAnterior;
-        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -10,7 +10,7 @@ Webs
 - Apps móviles
 - Catálogos digitales
 
-🧩 Funcionalidades
+Funcionalidades
 
 La aplicación permite:
 
@@ -56,3 +56,18 @@ Tablas principales:
 - MARCAS
 - CATEGORIAS
 - IMAGENES
+
+⚙️ Configuración de la base de datos
+
+Configurar connection string:
+
+<code>
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <connectionStrings>
+    <add name="DefaultConnection"
+         connectionString="Data Source=.;Initial Catalog=CATALOGO_DB;Integrated Security=True"
+         providerName="System.Data.SqlClient" />
+  </connectionStrings>
+</configuration>
+    </code>

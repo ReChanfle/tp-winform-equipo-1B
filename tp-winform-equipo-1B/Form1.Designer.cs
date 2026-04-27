@@ -57,9 +57,10 @@
             this.btnAgregar.AccessibleName = "btnAgregar";
             this.btnAgregar.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(12, 462);
+            this.btnAgregar.Location = new System.Drawing.Point(16, 569);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(141, 35);
+            this.btnAgregar.Size = new System.Drawing.Size(188, 43);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar Producto";
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -69,11 +70,12 @@
             // 
             this.dataGridView2.AccessibleName = "datagridview2";
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(12, 54);
+            this.dataGridView2.Location = new System.Drawing.Point(16, 66);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(991, 402);
+            this.dataGridView2.Size = new System.Drawing.Size(1321, 495);
             this.dataGridView2.TabIndex = 0;
             // 
             // toolStrip2
@@ -88,32 +90,32 @@
             this.toolStripButton2});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1309, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1745, 28);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(97, 22);
+            this.toolStripLabel3.Size = new System.Drawing.Size(122, 25);
             this.toolStripLabel3.Text = "Filtrar por marca:";
             // 
             // toolStripComboBox3
             // 
             this.toolStripComboBox3.Name = "toolStripComboBox3";
-            this.toolStripComboBox3.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox3.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBox3.Click += new System.EventHandler(this.LoadComboBrands_Click);
             // 
             // toolStripLabel4
             // 
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(110, 22);
+            this.toolStripLabel4.Size = new System.Drawing.Size(141, 25);
             this.toolStripLabel4.Text = "Filtrar por categoria";
             // 
             // toolStripComboBox4
             // 
             this.toolStripComboBox4.Name = "toolStripComboBox4";
-            this.toolStripComboBox4.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox4.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBox4.Click += new System.EventHandler(this.LoadComboCategory_Click);
             // 
             // toolStripButton1
@@ -124,7 +126,7 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Margin = new System.Windows.Forms.Padding(2, 1, 4, 2);
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(41, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(51, 25);
             this.toolStripButton1.Text = "Filtrar";
             this.toolStripButton1.Click += new System.EventHandler(this.Filter_Click);
             // 
@@ -135,26 +137,27 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(51, 22);
+            this.toolStripButton2.Size = new System.Drawing.Size(63, 25);
             this.toolStripButton2.Text = "Limpiar";
             this.toolStripButton2.Click += new System.EventHandler(this.ResetFilter_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.AccessibleName = "pictureBox1";
-            this.pictureBox1.Location = new System.Drawing.Point(1022, 89);
+            this.pictureBox1.Location = new System.Drawing.Point(1363, 110);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(263, 342);
+            this.pictureBox1.Size = new System.Drawing.Size(351, 421);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
             // btnLastpicture
             // 
-            this.btnLastpicture.Location = new System.Drawing.Point(1022, 436);
-            this.btnLastpicture.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLastpicture.Location = new System.Drawing.Point(1363, 537);
+            this.btnLastpicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLastpicture.Name = "btnLastpicture";
-            this.btnLastpicture.Size = new System.Drawing.Size(91, 19);
+            this.btnLastpicture.Size = new System.Drawing.Size(121, 23);
             this.btnLastpicture.TabIndex = 6;
             this.btnLastpicture.Text = "Anterior";
             this.btnLastpicture.UseVisualStyleBackColor = false;
@@ -162,10 +165,10 @@
             // 
             // btnNextPticture
             // 
-            this.btnNextPticture.Location = new System.Drawing.Point(1199, 436);
-            this.btnNextPticture.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNextPticture.Location = new System.Drawing.Point(1599, 537);
+            this.btnNextPticture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNextPticture.Name = "btnNextPticture";
-            this.btnNextPticture.Size = new System.Drawing.Size(85, 19);
+            this.btnNextPticture.Size = new System.Drawing.Size(113, 23);
             this.btnNextPticture.TabIndex = 7;
             this.btnNextPticture.Text = "Siguiente";
             this.btnNextPticture.UseVisualStyleBackColor = false;
@@ -175,18 +178,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1074, 61);
+            this.label1.Location = new System.Drawing.Point(1432, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 25);
+            this.label1.Size = new System.Drawing.Size(211, 31);
             this.label1.TabIndex = 8;
             this.label1.Text = "Previsualización";
             // 
             // btnLimpiarFiltro
             // 
             this.btnLimpiarFiltro.AccessibleName = "btnLimpiarFiltro";
-            this.btnLimpiarFiltro.Location = new System.Drawing.Point(924, 26);
+            this.btnLimpiarFiltro.Location = new System.Drawing.Point(1232, 32);
+            this.btnLimpiarFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLimpiarFiltro.Name = "btnLimpiarFiltro";
-            this.btnLimpiarFiltro.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiarFiltro.Size = new System.Drawing.Size(100, 28);
             this.btnLimpiarFiltro.TabIndex = 9;
             this.btnLimpiarFiltro.Text = "Limpiar filtro";
             this.btnLimpiarFiltro.UseVisualStyleBackColor = true;
@@ -195,9 +200,10 @@
             // txtBuscar
             // 
             this.txtBuscar.AccessibleName = "txtBuscar";
-            this.txtBuscar.Location = new System.Drawing.Point(711, 28);
+            this.txtBuscar.Location = new System.Drawing.Point(948, 34);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(209, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(277, 22);
             this.txtBuscar.TabIndex = 10;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -205,9 +211,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(801, 8);
+            this.label2.Location = new System.Drawing.Point(1068, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 16);
+            this.label2.Size = new System.Drawing.Size(154, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Búsqueda por texto";
             // 
@@ -215,9 +222,10 @@
             // 
             this.btnGestionar.AccessibleName = "btnGestionar";
             this.btnGestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestionar.Location = new System.Drawing.Point(159, 462);
+            this.btnGestionar.Location = new System.Drawing.Point(212, 569);
+            this.btnGestionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGestionar.Name = "btnGestionar";
-            this.btnGestionar.Size = new System.Drawing.Size(224, 35);
+            this.btnGestionar.Size = new System.Drawing.Size(299, 43);
             this.btnGestionar.TabIndex = 12;
             this.btnGestionar.Text = "Gestionar Marcas y Categorías";
             this.btnGestionar.UseVisualStyleBackColor = true;
@@ -225,9 +233,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 510);
+            this.ClientSize = new System.Drawing.Size(1745, 628);
             this.Controls.Add(this.btnGestionar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBuscar);
@@ -240,8 +248,9 @@
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.dataGridView2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
+            this.Text = "Catálogo de Artículos";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.toolStrip2.ResumeLayout(false);

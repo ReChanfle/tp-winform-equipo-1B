@@ -59,8 +59,11 @@ Tablas principales:
 
 ⚙️ Configuración de la base de datos
 
-Configurar connection string:
+## ⚙️ Configuración de conexión
 
+Agregá este `App.config`:
+
+```xml
 <configuration>
   <connectionStrings>
     <add name="DefaultConnection"
@@ -68,3 +71,4 @@ Configurar connection string:
          providerName="System.Data.SqlClient" />
   </connectionStrings>
 </configuration>
+...
